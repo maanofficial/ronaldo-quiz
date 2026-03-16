@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:black;
+color:white;
+font-family:Arial;
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+margin:15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+#leave{
+position:absolute;
+background:red;
+color:white;
+transition:0.3s;
+}
+
+#continue{
+background:green;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Do you want to continue?</h1>
+
+<button id="continue" onclick="next()">Continue</button>
+<button id="leave">Leave Website</button>
+
+<script>
+
+function next(){
+window.location.href="choose.html";
+}
+
+const leave=document.getElementById("leave");
+
+function move(){
+let x=Math.random()*(window.innerWidth-120);
+let y=Math.random()*(window.innerHeight-60);
+
+leave.style.left=x+"px";
+leave.style.top=y+"px";
+}
+
+leave.addEventListener("mouseover",move);
+leave.addEventListener("touchstart",move);
+
+</script>
+
+</body>
+</html>

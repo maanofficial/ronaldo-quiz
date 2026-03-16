@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grand Ronaldo Fan Prize</title>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+font-family:Arial;
+text-align:center;
+color:white;
+background:#0d0d0d;
+overflow:auto;
+padding-top:40px;
+}
+
+/* screen shaking */
+
+.shake{
+animation:shake 0.15s infinite;
+}
+
+@keyframes shake{
+0%{transform:translate(3px,3px);}
+25%{transform:translate(-3px,2px);}
+50%{transform:translate(3px,-3px);}
+75%{transform:translate(-3px,-2px);}
+100%{transform:translate(3px,3px);}
+}
+
+/* certificate */
+
+#certificate{
+display:none;
+background:white;
+color:black;
+padding:40px;
+border:8px solid gold;
+width:650px;
+border-radius:15px;
+margin-top:20px;
+}
+
+#certificate h1{
+color:#c9a000;
+font-size:38px;
+}
+
+#certificate img{
+width:150px;
+margin:15px;
+}
+
+.signature{
+margin-top:25px;
+font-family:cursive;
+font-size:22px;
+}
+
+input{
+padding:10px;
+font-size:18px;
+margin:10px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+border:none;
+border-radius:8px;
+}
+
+#download{
+display:none;
+background:gold;
+color:black;
+font-weight:bold;
+}
+
+/* cheering emojis */
+
+.emoji{
+position:absolute;
+font-size:30px;
+animation:float 3s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(0);}
+to{transform:translateY(-800px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Enter your name to receive certificate</h2>
+
+<input id="name" placeholder="Enter your name">
+
+<button onclick="generate()">Generate Certificate</button>
+
+<div id="certificate">
+
+<h1>🏆 GRAND RONALDO FAN PRIZE</h1>
+
+<img src="ronaldo.jpg">
+
+<p>This certificate is proudly awarded to</p>
+
+<h2 id="winner"></h2>
+
+<p>For successfully completing the Ronaldo Fan Challenge</p>
+
+<div class="signature">
+Cristiano Ronaldo Fan Club
+</div>
+
+</div>
+
+<button id="download" onclick="downloadCertificate()">
+⬇ Download Certificate
+</button>
+
+<audio id="siu">
+<source src="siu.mp3">
+</audio>
+
+<script>
+
+function generate(){
+
+let name=document.getElementById("name").value;
+
+if(name==""){
+alert("Please enter your name");
+return;
+}
+
+document.getElementById("winner").innerText=name;
+
+document.getElementById("certificate").style.display="block";
+document.getElementById("download").style.display="inline-block";
+
+/* play SIUU sound */
+document.getElementById("siu").play();
+
+/* start shaking */
+document.body.classList.add("shake");
+
+/* stop shaking after 4 seconds */
+setTimeout(function(){
+document.body.classList.remove("shake");
+},4000);
+
+/* create cheering emojis */
+
+for(let i=0;i<40;i++){
+
+let emoji=document.createElement("div");
+
+emoji.className="emoji";
+emoji.innerText="🎉⚽🔥";
+
+emoji.style.left=Math.random()*100+"%";
+emoji.style.top=Math.random()*100+"%";
+
+document.body.appendChild(emoji);
+
+}
+
+}
+
+/* download certificate */
+
+function downloadCertificate(){
+
+html2canvas(document.getElementById("certificate")).then(canvas=>{
+
+let link=document.createElement("a");
+
+link.download="grand_ronaldo_fan_certificate.png";
+
+link.href=canvas.toDataURL();
+
+link.click();
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

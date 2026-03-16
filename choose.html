@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choose GOAT</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:#111;
+color:white;
+font-family:Arial;
+}
+
+.container{
+display:flex;
+gap:60px;
+}
+
+button{
+width:200px;
+height:240px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+img{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+#messi{
+position:absolute;
+background:#2962ff;
+transition:0.3s;
+}
+
+#ronaldo{
+background:#00c853;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Choose Your GOAT</h1>
+
+<div class="container">
+
+<button id="ronaldo" onclick="nextPage()">
+<img src="ronaldo.jpg">
+Ronaldo
+</button>
+
+<button id="messi">
+<img src="messi.jpg">
+Messi
+</button>
+
+</div>
+
+<script>
+
+function nextPage(){
+window.location.href="questions.html";
+}
+
+const messi=document.getElementById("messi");
+const ronaldo=document.getElementById("ronaldo");
+
+window.onload=function(){
+let rect=ronaldo.getBoundingClientRect();
+messi.style.left=(rect.right+40)+"px";
+messi.style.top=rect.top+"px";
+}
+
+function moveMessi(){
+let x=Math.random()*(window.innerWidth-220);
+let y=Math.random()*(window.innerHeight-260);
+
+messi.style.left=x+"px";
+messi.style.top=y+"px";
+}
+
+messi.addEventListener("mouseover",moveMessi);
+messi.addEventListener("touchstart",moveMessi);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.quiz{
+background:#1e1e1e;
+padding:30px;
+border-radius:10px;
+width:420px;
+}
+
+.option{
+display:flex;
+align-items:center;
+gap:10px;
+background:#333;
+margin:10px 0;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.option img{
+width:50px;
+height:50px;
+border-radius:6px;
+}
+
+#disclaimer{
+color:yellow;
+margin-bottom:15px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="disclaimer"></div>
+
+<div class="quiz">
+
+<h2 id="question">Who is best tea seller in world?</h2>
+
+<div class="option" onclick="answer(1)"><img src="dolly.jpg"> Dolly Chaiwala</div>
+<div class="option" onclick="answer(2)"><img src="chotu.jpg"> Chotu</div>
+<div class="option" onclick="answer(3)"><img src="bill.jpg"> Bill Gates</div>
+<div class="option" onclick="answer(4)"><img src="modi.jpg"> PM Modi</div>
+
+</div>
+
+<script>
+
+let step=1;
+
+function wrong(){
+alert("😂🤡 Ha ha noob better luck next time");
+window.location.href="website.html";
+}
+
+function answer(choice){
+
+if(step==1){
+
+if(choice==4){
+
+step=2;
+
+document.getElementById("question").innerText=
+"Who is the biggest Ronaldo fan in world?";
+
+document.querySelectorAll(".option")[0].innerHTML='<img src="putin.jpg"> Putin';
+document.querySelectorAll(".option")[1].innerHTML='<img src="messi.jpg"> Messi';
+document.querySelectorAll(".option")[2].innerHTML='<img src="mr.jpg"> IShowSpeed';
+document.querySelectorAll(".option")[3].innerHTML='<img src="carry.jpg"> I';
+
+}
+
+else{ wrong(); }
+
+}
+
+else if(step==2){
+
+if(choice==3){
+
+step=3;
+
+document.getElementById("disclaimer").innerText=
+"⚠ This is the final question to achieve the Grand Ronaldo Fan Prize";
+
+document.getElementById("question").innerText=
+"Who is the best YouTuber in the Milky Way galaxy?";
+
+document.querySelectorAll(".option")[0].innerHTML='<img src="mr.jpg"> Mr Beast';
+document.querySelectorAll(".option")[1].innerHTML='<img src="carry.jpg"> CarryMinati';
+document.querySelectorAll(".option")[2].innerHTML='<img src="vapro.jpg"> Vapro Gamerz';
+document.querySelectorAll(".option")[3].innerHTML='<img src="maan.jpg"> Maan Editz';
+
+}
+
+else{ wrong(); }
+
+}
+
+else if(step==3){
+
+if(choice==4){
+
+window.location.href="certificate.html";
+
+}
+
+else{ wrong(); }
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
